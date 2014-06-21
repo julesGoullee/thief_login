@@ -1,0 +1,22 @@
+{
+    "name": "thief_login",
+    "version": "0.1.0",
+    "description": "reste un mystere",
+
+    "author": {
+        "name": "jules Goullée",
+        "email": "julesgoullee@email.com"
+    },
+
+    "dependencies": {
+        "express": "~4.3.2",
+        "socket.io": "~1.0.2",
+        "ent": "~2.0.0",
+        "mysql": "~2.3.1"
+    }
+}
+
+//        "karma": "^0.12.4",
+//        "karma-osx-reporter": "0.0.4",
+//        "karma-jasmine": "^0.1.5",
+//        "phantomjs": "^1.9.7-3"
