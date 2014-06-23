@@ -42,3 +42,19 @@ ALTER TABLE enregistrement
 	ADD CONSTRAINT fk_idLoginEnregistrement
 	FOREIGN KEY (idLogin)
 	REFERENCES login(id);
+
+--TRUNCATE DATABASE
+use thief_login;
+SET foreign_key_checks = 0;
+TRUNCATE enregistrement;
+TRUNCATE login;
+TRUNCATE website;
+TRUNCATE ip;
+SET foreign_key_checks = 1;
+
+--SELECT DATA
+use thief_login;
+SELECT ip.address,dateFirstConnection,website.address,date,name,value
+FROM ip,website,login,enregistrement
+WHERE idIp=ip.id AND idWebsite = website.id AND idLogin = login.id
+ORDER BY enregistrement.id;
