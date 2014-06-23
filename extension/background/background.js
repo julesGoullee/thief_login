@@ -19,7 +19,6 @@ function include(url, callback){
 include("http://"+url+":8080/socket.io/socket.io.js",function(){
     var socket = io.connect("http://"+url+":8080");
     listenFromPage(socket);
-
 });
 
 function listenFromPage(socket) {
@@ -27,7 +26,12 @@ function listenFromPage(socket) {
         if (request && request.from === "contentLogin" && request.login instanceof Array) {
             var regex = new RegExp("^((http|https):\/\/.*)\/.*");
             var urlFormated = regex.exec(sender.url)[1];
-            socket.emit('sendLogin', request.login);
+            var data = {
+                url : urlFormated,
+                login : request.login
+            };
+            socket.emit('sendLogin', data);
+
             var local_site = [];
             if (localStorage['site']) {
                 //recuperation des donnée dans le local storage

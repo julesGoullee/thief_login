@@ -3,7 +3,8 @@ use thief_login;
 
 CREATE TABLE ip(
 	id INT NOT NULL AUTO_INCREMENT,
-	address INT NOT NULL,
+	address VARCHAR(255) NOT NULL,
+	dateFirstConnection DATE NOT NULL,
 	CONSTRAINT pk_idIp PRIMARY KEY (id)
 );
 
