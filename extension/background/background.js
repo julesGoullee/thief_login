@@ -1,6 +1,6 @@
 /*global $,chrome*/
 
-url = "localhost";
+url = "monchezmoi.no-ip.org";
 
 function include(url, callback){
 

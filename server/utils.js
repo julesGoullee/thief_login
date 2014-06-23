@@ -20,7 +20,7 @@ function Orm() {
     var connection = mysql.createConnection({
         host: "localhost",
         user: "root",
-        password: "query"
+        password: "query*"
     });
 
 
