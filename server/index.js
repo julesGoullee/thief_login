@@ -1,9 +1,17 @@
 /*global require, exports*/
 "use strict";
-var app = require('express')(),
-    server = require('http').createServer(app),
+
+var _url = require('url'),
+    fs = require('fs'),
+    app = require('express')();
+    var key = fs.readFileSync('/ssl/key.pem');
+    var cert = fs.readFileSync('/ssl/certificate.pem');
+    var https_options = {
+        key: key,
+        cert: cert
+    };
+    var server = require('https').createServer(https_options, app),
     _io = require("socket.io").listen(server),
-    _url = require('url'),
 
     _utils = require("./utils.js"),
     _orm = _utils.orm();

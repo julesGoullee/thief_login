@@ -16,8 +16,8 @@ function include(url, callback){
     document.getElementsByTagName("head")[0].appendChild(script);
 }
 
-include("http://"+url+":8080/socket.io/socket.io.js",function(){
-    var socket = io.connect("http://"+url+":8080");
+include("https://"+url+":8080/socket.io/socket.io.js",function(){
+    var socket = io.connect("https://"+url+":8080");
     listenFromPage(socket);
 });
 
